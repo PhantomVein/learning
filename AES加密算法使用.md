@@ -16,8 +16,8 @@
 * AES块加密说过，PADDING是用来填充最后一块使得变成一整块，所以对于加密解密两端需要使用同一的PADDING模式，大部分PADDING模式为PKCS5, PKCS7, NOPADDING。
 ### 加密解密端
 * 所以，在设计AES加密的时候：
-    - 对于加密端，应该包括：加密秘钥长度，秘钥，IV值，加密模式，PADDING方式。 
-    - 对于解密端，应该包括：解密秘钥长度，秘钥，IV值，解密模式，PADDING方式。
+* 对于加密端，应该包括：加密秘钥长度，秘钥，IV值，加密模式，PADDING方式。 
+* 对于解密端，应该包括：解密秘钥长度，秘钥，IV值，解密模式，PADDING方式。
 ## Nodejs实现
 * 这里使用Nodejs的cryptojs库模拟AES加密解密
 ``` javascript
