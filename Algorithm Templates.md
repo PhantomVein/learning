@@ -27,7 +27,7 @@ visited 不包含 i : not visited & (1 << i)
 ```
 
 * 并查集
-```
+```python
 class DisjointSetUnion:
     def __init__(self, n: int):
         self.n = n
@@ -49,6 +49,7 @@ class DisjointSetUnion:
         self.rank[root_x] += self.rank[root_y]
         self.f[root_y] = root_x
 ```
+
 * 非递归遍历
 ```python
 def inorderTraversal(root: Node):
@@ -146,14 +147,12 @@ class Trie:
         return True
         
 
-
 # Your Trie object will be instantiated and called as such:
 # obj = Trie()
 # obj.insert(word)
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
 ```
-
 
 * 最短路 Dijkstra
 ```python
