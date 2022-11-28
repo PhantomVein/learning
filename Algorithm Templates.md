@@ -1,5 +1,5 @@
 * 位运算
-```python
+```
 bit操作
 
 & 符号，x & y ，会将两个十进制数在二进制下进行与运算
@@ -27,7 +27,7 @@ visited 不包含 i : not visited & (1 << i)
 ```
 
 * 并查集
-```python
+```
 class DisjointSetUnion:
     def __init__(self, n: int):
         self.n = n
@@ -95,7 +95,8 @@ def quick_sort(nums: List[int]):
 ```python
 # lower_bound / bisect_left 求非降序范围[first, last)内第一个不小于value的值的位置
 # 本身找的是x >= value的下界，若为last则不存在
-def lower_bound(array, first, last, value):  
+# 所以最好判断返回值是否为last，为last则不能作为index
+def lower_bound(array, first, last, value):
     while first < last: # 搜索区间[first, last)不为空
         mid = first + (last - first) // 2  # 防溢出
         if array[mid] < value: first = mid + 1 
@@ -103,4 +104,61 @@ def lower_bound(array, first, last, value):
     return first  # last也行，因为[first, last)为空的时候它们重合
 
 # upper_bound / bisect_right / bisect 找的是x > value的下界，若为last则不存在
+# 代码为把 array[mid] < value 改为 array[mid] <= value
+```
+
+* 字典树
+```python
+class TrieNode:
+    def __init__(self):
+        self.children = defaultdict(TrieNode)
+        self.is_word = False
+
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    # Inserts a word into the trie.
+    def insert(self, word: str) -> None:
+        node = self.root
+        for s in word:
+            node = node.children[s]
+        node.is_word = True
+
+    # Returns if the word is in the trie.
+    def search(self, word: str) -> bool:
+        node = self.root
+        for s in word:
+            if s in node.children:
+                node = node.children[s]
+            else:
+                return False
+        return node.is_word
+
+    # Returns if there is any word in the trie that starts with the given prefix.
+    def startsWith(self, prefix: str) -> bool:
+        node = self.root
+        for s in prefix:
+            if s in node.children:
+                node = node.children[s]
+            else:
+                return False
+        return True
+        
+
+
+# Your Trie object will be instantiated and called as such:
+# obj = Trie()
+# obj.insert(word)
+# param_2 = obj.search(word)
+# param_3 = obj.startsWith(prefix)
+```
+
+
+* 最短路 Dijkstra
+```python
+```
+
+* 最小生成树 Prim
+```python
 ```
